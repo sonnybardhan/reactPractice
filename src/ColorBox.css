@@ -1,0 +1,8 @@
+.color-box {
+	display: flex;
+	width: 100vw;
+	flex-wrap: wrap;
+	display: inline-block;
+	width: 16.6%;
+	height: 16.6%;
+}

@@ -13,21 +13,3 @@ body {
 	text-align: center;
 	font-size: 2em;
 }
-
-h1 {
-	margin: 1em;
-}
-
-img {
-	margin: 1em;
-}
-
-button {
-	margin: 1em;
-	padding: 1em;
-	font-size: 1rem;
-}
-
-div {
-	border: none;
-}

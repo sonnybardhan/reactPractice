@@ -1,10 +1,28 @@
 import React from 'react';
 import './ColorBox.css';
+import { randomColor } from './helpers/randomColor';
 
-export default function ColorBox({ backgroundColor }) {
-	const styles = {
-		backgroundColor
+class ColorBox extends React.Component {
+	state = {
+		styles: {
+			backgroundColor: this.props.backgroundColor
+		}
 	};
 
-	return <div className="color-box" style={styles} />;
+	handleClick = (e) => {
+		const prevColor = this.state.styles.backgroundColor;
+		let newColor = randomColor();
+
+		while (newColor === prevColor) {
+			newColor = randomColor();
+		}
+
+		this.setState({ styles: { backgroundColor: newColor } });
+	};
+
+	render() {
+		return <div className="color-box" style={this.state.styles} onClick={this.handleClick} />;
+	}
 }
+
+export default ColorBox;

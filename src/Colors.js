@@ -4,10 +4,6 @@ import { randomColor } from './helpers/randomColor';
 import './Colors.css';
 
 class Colors extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		const boxes = [];
 		for (let i = 0; i < 18; i++) {

@@ -21,14 +21,7 @@ export default class BoxList extends Component {
 			return id !== incomingId;
 		});
 
-		console.log('remainingBoxes: ', remainingBoxes);
-
-		// this.setState({ newState }, () => {
-		// 	console.log('boxes length after deletion: ', this.state.boxes);
-		// });
-
 		this.setState((prev) => {
-			// return { ...prev, boxes: remainingBoxes };
 			return { boxes: remainingBoxes };
 		});
 	};

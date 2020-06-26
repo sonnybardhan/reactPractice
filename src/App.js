@@ -1,11 +1,11 @@
 import React from 'react';
-import Timer from './Timer';
+import GithubUserInfo from './GithubUserInfo';
 import './App.css';
 
 function App() {
 	return (
 		<div className="App">
-			<Timer />
+			<GithubUserInfo user="sonnybardhan" />
 		</div>
 	);
 }

@@ -1,0 +1,20 @@
+.navbar {
+	/* height: 10vh; */
+	/* width: 100vw; */
+	text-decoration: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.active-link {
+	text-decoration: underline;
+	font-size: 1.5em;
+	background-color: aquamarine;
+	padding: .25em;
+}
+
+.nav-item {
+	margin: 1em;
+	text-decoration: none;
+}

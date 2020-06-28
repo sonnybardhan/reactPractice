@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class DogDetail extends Component {
 	render() {
-		// const dog = this.props.dog[0];
+		console.log(this.props);
 		const dog = this.props.dog;
 		return (
 			<div className="dog-detail">

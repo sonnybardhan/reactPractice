@@ -1,13 +1,14 @@
 import React from 'react';
 import './App.css';
-import { NavLink, Switch, Route } from 'react-router-dom';
-import Dogs from './Dogs';
-import Dog from './Dog';
-import DogDetail from './DogDetail';
+// import { NavLink, Switch, Route } from 'react-router-dom';
+// import Dogs from './Dogs';
+// import Dog from './Dog';
+// import DogDetail from './DogDetail';
 import whiskey from './images/whiskey.jpg';
 import tubby from './images/tubby.jpg';
 import hazel from './images/hazel.jpg';
 import Navbar from './Navbar';
+import Routes from './Routes';
 
 class App extends React.Component {
 	static defaultProps = {
@@ -51,24 +52,7 @@ class App extends React.Component {
 		return (
 			<div className="App">
 				<Navbar dogs={dogNames} />
-				<Switch>
-					<Route exact path="/" render={() => <Dogs dogs={this.props.dogs} />} />
-					<Route
-						exact
-						path="/dogs/:dog"
-						render={(routeProps) => (
-							<DogDetail
-								{...routeProps}
-								dog={
-									this.props.dogs.filter(
-										(dog) => dog.name.toLowerCase() === routeProps.match.params.dog
-									)[0]
-								}
-							/>
-						)}
-					/>
-					<Route render={() => <h1>Error! Page Not Found!</h1>} />
-				</Switch>
+				<Routes dogs={this.props.dogs} />
 			</div>
 		);
 	}

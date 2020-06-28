@@ -5,7 +5,7 @@ import './Navbar.css';
 export default class Navbar extends Component {
 	render() {
 		const homeLink = (
-			<NavLink key={'home'} activeClassName="active-link" to={`/`} className="nav-item">
+			<NavLink key={'home'} to={`/`} className="nav-item">
 				Home
 			</NavLink>
 		);

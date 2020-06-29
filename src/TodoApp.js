@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import useTodoState from './hooks/useTodoState';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import Typograpy from '@material-ui/core/Typography';
@@ -14,7 +15,7 @@ export default function TodoApp() {
 		return JSON.parse(localStorage.getItem(STORE) || '[]');
 	}
 
-	const [ todos, setTodos ] = useState(getTodos());
+	const [ todos, addTodo, removeTodo, toggleTodo, editTodo ] = useTodoState(getTodos());
 
 	useEffect(
 		() => {
@@ -23,34 +24,6 @@ export default function TodoApp() {
 		[ todos ]
 	);
 
-	const addTodo = (newTask) => {
-		setTodos([ ...todos, { id: genId(), task: newTask, completed: false } ]);
-	};
-
-	const removeTodo = (id) => {
-		const updatedTodos = todos.filter((todo) => todo.id !== id);
-		setTodos(updatedTodos);
-	};
-
-	const toggleTodo = (id) => {
-		const updatedTodos = todos.map((todo) => {
-			if (todo.id === id) {
-				return { ...todo, completed: !todo.completed };
-			}
-			return todo;
-		});
-		setTodos(updatedTodos);
-	};
-
-	const editTodo = (id, newTask) => {
-		const updatedTodos = todos.map((todo) => {
-			if (todo.id === id) {
-				return { ...todo, task: newTask, completed: false };
-			}
-			return todo;
-		});
-		setTodos(updatedTodos);
-	};
 	return (
 		<Paper
 			style={{
@@ -78,8 +51,4 @@ export default function TodoApp() {
 			</Grid>
 		</Paper>
 	);
-}
-
-function genId() {
-	return `${(Math.random() * 10 ** 5) | 0}-${(Math.random() * 10 ** 5) | 0}-${(Math.random() * 10 ** 5) | 0}`;
 }

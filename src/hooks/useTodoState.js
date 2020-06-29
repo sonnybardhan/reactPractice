@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import useLs from './useLS';
 
-export default (initialTodos) => {
-	const [ todos, setTodos ] = useState(initialTodos);
+export default (initialTodos, storeName) => {
+	const [ todos, setTodos ] = useLs(initialTodos, storeName);
 
 	return [
 		todos,

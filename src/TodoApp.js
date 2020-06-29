@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
 import Typograpy from '@material-ui/core/Typography';
@@ -7,6 +7,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 
+const STORE = 'hooks-todo';
+
 export default function TodoApp() {
 	const initialTodos = [
 		{ id: genId(), task: 'clean fishtank', completed: false },
@@ -14,7 +16,25 @@ export default function TodoApp() {
 		{ id: genId(), task: 'build a career', completed: true }
 	];
 
-	const [ todos, setTodos ] = useState(initialTodos);
+	function getTodos() {
+		let todos = [];
+		if (todos) {
+			todos = JSON.parse(localStorage.getItem(STORE));
+		} else {
+			todos = initialTodos;
+		}
+		return todos;
+	}
+
+	// const [ todos, setTodos ] = useState(initialTodos);
+	const [ todos, setTodos ] = useState(getTodos());
+
+	useEffect(
+		() => {
+			localStorage.setItem(STORE, JSON.stringify(todos));
+		},
+		[ todos ]
+	);
 
 	const addTodo = (newTask) => {
 		setTodos([ ...todos, { id: genId(), task: newTask, completed: false } ]);

@@ -10,23 +10,10 @@ import Grid from '@material-ui/core/Grid';
 const STORE = 'hooks-todo';
 
 export default function TodoApp() {
-	const initialTodos = [
-		{ id: genId(), task: 'clean fishtank', completed: false },
-		{ id: genId(), task: 'walk dog', completed: false },
-		{ id: genId(), task: 'build a career', completed: true }
-	];
-
 	function getTodos() {
-		let todos = [];
-		if (todos) {
-			todos = JSON.parse(localStorage.getItem(STORE));
-		} else {
-			todos = initialTodos;
-		}
-		return todos;
+		return JSON.parse(localStorage.getItem(STORE) || '[]');
 	}
 
-	// const [ todos, setTodos ] = useState(initialTodos);
 	const [ todos, setTodos ] = useState(getTodos());
 
 	useEffect(
@@ -82,7 +69,11 @@ export default function TodoApp() {
 			<Grid container justify="center" style={{ marginTop: '1rem' }}>
 				<Grid item xs={11} md={8} lg={4}>
 					<TodoForm addTodo={addTodo} />
-					<TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+					{todos.length ? (
+						<TodoList todos={todos} removeTodo={removeTodo} toggleTodo={toggleTodo} editTodo={editTodo} />
+					) : (
+						''
+					)}
 				</Grid>
 			</Grid>
 		</Paper>

@@ -26,14 +26,14 @@ export default function Todo({ task, completed, removeTodo, id, toggleTodo, edit
 	return (
 		<ListItem>
 			<Checkbox checked={completed} tabIndex={-1} onClick={() => toggleTodo(id)} />
-			<ListItemText style={{ textDecoration: `${completed ? 'line-through' : 'none'}` }}>
+			<ListItemText style={{ textDecoration: `${completed ? 'line-through' : 'none'}`, height: '64px' }}>
 				{edit ? <EditTodoForm id={id} task={task} editTodo={editTodo} toggleEdit={toggleEdit} /> : task}
 			</ListItemText>
 			<ListItemSecondaryAction>
-				<Icon aria-label="Edit" style={{ cursor: 'pointer' }}>
+				<Icon aria-label="Edit" style={{ cursor: 'pointer', color: 'yellowgreen' }}>
 					<EditIcon onClick={handleEditClick} />
 				</Icon>
-				<Icon aria-label="Delete" style={{ cursor: 'pointer' }}>
+				<Icon aria-label="Delete" style={{ cursor: 'pointer', color: 'red' }}>
 					<DeleteIcon onClick={() => removeTodo(id)} />
 				</Icon>
 			</ListItemSecondaryAction>
